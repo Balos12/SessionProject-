@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+    <div layout:fragment="mainContent">
+        <div class="container">
+                <div class="col-6 mx-auto">
+                    <h1 style="text-align: center">DETAILS PAGE</h1>
+                    <form th:action="@{'/saveTrophy'}" method="post" th:if = "${trophy!=null}">
+                        <input type="hidden" name="id"  th:value="${trophy.id}">
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <label>NAME:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <input type="text" class="form-control" name="name" th:value="${trophy.name}">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <label>YEAR:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <input type="text" class="form-control" name="year" th:value="${trophy.year}">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="row-2">
+                                <button class="btn btn-success">SAVE TROPHY</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row-2">
+                        <form th:action="@{'/deleteTrophy'}" method="post" th:if = "${trophy!=null}">
+                            <input type="hidden" name="id" th:value="${trophy.id}">
+                            <div class="form-group">
+                                <div class="row-2">
+                                    <button class="btn btn-danger">DELETE TROPHY</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>

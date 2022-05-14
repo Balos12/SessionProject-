@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html"
+      xmlns="http://www.w3.org/1999/html">
+<div layout:fragment="mainContent">
+    <div class="container-fluid">
+        <div class="row-2">
+            <div class="col-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>EMAIL</th>
+                                    <th>FULL NAME</th>
+                                    <th width="7%">DETAILS</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="s : ${user}">
+                                    <td th:text="${s.id}"></td>
+                                    <td th:text="${s.email}"></td>
+                                    <td th:text="${s.fullName}"></td>
+                                    <td>
+                                        <a th:href="@{'/detailsu/' + ${s.id}}" class="btn btn-primary btn-sm">DETAILS</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

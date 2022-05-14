@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <div class="container-fluid" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+    <div class="row-2">
+      <div class="col-12">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>TROPHY NAME</th>
+                <th>YEAR</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="c : ${trophy}">
+                <td th:text="${c.id}"></td>
+                <td th:text="${c.name}"></td>
+                <td th:text="${c.year}"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</html>

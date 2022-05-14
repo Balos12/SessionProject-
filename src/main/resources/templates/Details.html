@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+    <div layout:fragment="mainContent">
+        <div class="container">
+                <div class="col-6 mx-auto">
+                    <h1 style="text-align: center">DETAILS PAGE</h1>
+                    <form th:action="@{'/savePlayer'}" method="post" th:if = "${player!=null}">
+                        <input type="hidden" name="id"  th:value="${player.id}">
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <label>NAME:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <input type="text" class="form-control" name="name" th:value="${player.name}">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <label>SURNAME:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <input type="text" class="form-control" name="surname" th:value="${player.surname}">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <label>BIRTHDATE:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <input type="date" class="form-control" name="birthdate" th:value="${player.date}">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <label>POSITION:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <select name="pos_id">
+                                    <option th:each="city : ${position}"  th:text="${city.position}" th:value="${city.id}" th:selected="${city.id == player.position}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="row-2">
+                                <button class="btn btn-success">SAVE PLAYER</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row-2">
+                        <form th:action="@{'/deletePlayer'}" method="post" th:if = "${player!=null}">
+                            <input type="hidden" name="id" th:value="${player.id}">
+                            <div class="form-group">
+                                <div class="row-2">
+                                    <button class="btn btn-danger">DELETE PLAYER</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>

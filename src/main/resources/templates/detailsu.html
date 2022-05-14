@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+<div layout:fragment="mainContent">
+    <div class="container">
+        <div class="col-6 mx-auto" >
+            <h1 style="text-align: center">DETAILS PAGE</h1>
+            <form th:action="@{'/saveUser'}" method="post" th:if = "${user!=null}">
+                <input type="hidden" name="id" th:value="${user.id}">
+
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label>EMAIL:</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <input type="text" class="form-control" name="email" th:value="${user.email}">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <label>NAME:</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <input type="text" class="form-control" name="full_name" th:value="${user.fullName}">
+                    </div>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <div class="row-2">
+                        <button class="btn btn-success">SAVE USER</button>
+                    </div>
+                </div>
+            </form>
+            <div class="row-2">
+                <form th:action="@{'/deleteUser'}" method="post" th:if = "${user!=null}">
+                    <input type="hidden" name="id" th:value="${user.id}">
+                    <div class="form-group">
+                        <div class="row-2">
+                            <button class="btn btn-danger">DELETE USER</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</html>
